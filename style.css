@@ -1,0 +1,165 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+
+}
+
+footer{
+    text-align: center;
+
+}
+a{
+    text-decoration: none;
+    color: purple;
+}
+a:hover{
+    text-decoration: none;
+    color: red;
+}
+.article{
+    margin-bottom: 50px;
+    width: 50%;
+    height: 50%;
+}
+
+.admin-table{
+    width: 100%;
+
+}
+.form-item{
+    width: 100%;
+
+}
+
+textarea{
+    height: 500px;
+}
+label{
+    width: 100%;
+}
+.text{
+    width: 250px;
+    height: 25px;
+    margin: 0px 0px 80px 0px;
+}
+.text2{
+    width: 250px;
+    height: 25px;
+    margin: 0px 0px 10px 0px;
+}
+input[name='email']:error{
+    border-color: red;
+}
+.but{
+    border-radius: 10px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    margin: 0px 0px 10px 0px;
+    background: #e7b841;
+}
+
+.signup{
+    text-align: center;
+    border-bottom: 3px solid #FFAA00;
+    border-top: 3px solid #FFAA00;
+    padding-top: 335px;
+    background: #FFD580;
+}
+.regist{
+
+    margin: 250px auto;
+    text-align: center;
+    width: 300px;
+
+}
+.reg_box{
+    background: #FFD580;
+    width: 300px;
+    border-radius: 10px;
+    height: 300px;
+    padding-top: 20px
+}
+.reg_text{
+    border-radius: 100px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    padding: 0px 0px 0px 8px;
+
+    margin-bottom: 20px
+}
+.reg{
+    margin-bottom: 20px;
+}
+.reg_but{
+    border-radius: 100px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    padding: 0px 0px 0px 8px;
+    margin-top: 20px;
+    background: #e7b841
+}
+.tooop{
+    padding-top: 20px;
+}
+.teeext:hover{
+    background: #d6d6d6;
+}
+.sub{
+    display: inline-block;
+    float: right;
+    padding-top: 200px;
+    text-align: center;
+    background: #ffdc97;
+    width: 270px;
+}
+.sub_form{
+    background: #FFD580;
+    width: 270px;
+    height: 130px;
+    border-bottom: 3px solid #FFAA00;
+    border-top: 3px solid #FFAA00;
+}
+.sub_text{
+    border-radius: 100px;
+    border: 1px solid;
+    width: 250px;
+    height: 30px;
+    padding: 0px 0px 0px 8px;
+
+}
+.sub_but{
+    border-radius: 10px;
+    border: 0;
+    width: 200px;
+    background: rgba(243, 91, 91, 0.87);
+    color: #fff;
+}
+.sub_but:hover{
+    background: rgba(217, 21, 21, 0.87)
+}
+.grid {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 2;
+    justify-content: space-between;
+    width: 100%;
+    align-items: stretch;
+}
+
+.column {
+    display: block;
+}
+
+.left {
+    width: 70%;
+}
+
+.right {
+    width: 29%;
+    max-width: 270px;
+    background-color: #ffdc97;
+}

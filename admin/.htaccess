@@ -1,0 +1,6 @@
+<files index.php=””>
+AuthType Basic
+AuthName “admin”
+AuthUserFile /Applications/MAMP/htdocs/blog/admin/.htpasswd
+Require valid-user
+</files>
