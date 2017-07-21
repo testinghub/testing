@@ -101,8 +101,3 @@ function server_parse($socket, $response, $line = __LINE__) {
 	return true;
 }
 ?>
-
-
-
-
-asdasdasdas
