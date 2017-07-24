@@ -2,7 +2,7 @@
     function articles_all($link)
     {
 
-        $query = "SELECT * FROM articles ORDER BY id DESC LIMIT 5";
+        $query = "SELECT * FROM articles ORDER BY id DESC";
         $result = mysqli_query($link, $query);
 
         if (!$result)
@@ -20,8 +20,6 @@
         return  $articles;
 
     }
-
-
     function articles_get($link, $id_article)
     {
         $query = sprintf("SELECT * FROM articles WHERE id=%d",
@@ -100,38 +98,6 @@
             die(mysqli_error($linl));
 
             return mysqli_affected_rows($link);
-    }
-
-    function articles_intro($text, $len = 500)
-    {
-        return mb_substr($text, 0, $len);
-    }
-
-    function articles_all2($link)
-    {
-
-        $query = "SELECT * FROM articles ORDER BY id DESC LIMIT 3";
-        $result = mysqli_query($link, $query);
-
-        if (!$result)
-            die(mysqli_error($link));
-
-        $n = mysqli_num_rows($result);
-        $articles2 = array();
-
-        for ($i = 0; $i < $n; $i++)
-        {
-        $row = mysqli_fetch_assoc($result);
-        $articles2[] = $row;
-        }
-
-        return  $articles2;
-
-    }
-
-    function articles_intro2($text, $len = 80)
-    {
-        return mb_substr($text, 0, $len);
     }
 
 ?>

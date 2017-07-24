@@ -39,12 +39,30 @@
                                     <a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a>
                                 </h3>
                                 <em>Публикация: <?=$a['date']?></em>
+
                                 <p class="text"><?=articles_intro($a['content'])?></p>
                             </div>
+
                         <?php endforeach ?>
                     </div>
                 </div>
                 <div class="column right">
+
+                    <div class="lastnews">
+                        <?php foreach($articles2 as $a2): ?>
+                            <div>
+                                <a href="article.php?id=<?=$a2['id']?>"><?=$a2['title']?></a><br>
+                                <em>Публикация: <?=$a2['date']?></em>
+                            </div>
+
+
+                            <div>
+                                <p class=""><?=articles_intro2($a2['content'])?></p>
+
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+
                     <div class="sub">
                         <form class="sub_form" method="post" action="/subscribe/sub.php">
                         <label>Подписка на наши новости</label><br>
@@ -97,6 +115,7 @@
                         ?><br>
                         <a href="/registration/exit.php">Выход</a>
                     </div>
+
                 </div>
             </div>
         </div>

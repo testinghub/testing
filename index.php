@@ -13,6 +13,8 @@
 
    $link = db_connect();
    $articles = articles_all($link);
+   $articles2 = articles_all2($link);
+
 
    include("views/articles.php")
 
