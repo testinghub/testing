@@ -163,3 +163,9 @@ input[name='email']:error{
     max-width: 270px;
     background-color: #ffdc97;
 }
+.textar{
+    width: 100%;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 10px
+}

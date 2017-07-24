@@ -31,6 +31,7 @@
                 <div class="column left">
                     <h1>Blog</h1>
                     <?php if(isADM()){ ?><a href="admin">Панель админа</a><br><?php } ?>
+                    <?php if(isADM()){ ?><a href="mail/mail.php">Розсылка</a><br><?php } ?>
                     <div class="cont">
                         <?php foreach($articles as $a): ?>
                             <div class="article">
