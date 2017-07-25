@@ -9,18 +9,16 @@
     <body>
         <div class="container">
             <h1>Blog</h1>
-            <?php if(!empty($article)): ?>
             <div>
                 <div class="article">
                     <h3>
-                        <?=$article['title']?>
+                        <?php echo $myrow['title']?>
                     </h3>
-                    <em>Opyblikovano: <?=$article['date']?></em>
-                    <p><?=$article['content']?></p>
+                    <em>Opyblikovano: <?php echo $myrow['date']?></em>
+                    <p><?php echo $myrow['content']?></p>
                 </div>
             </div>
         </div>
-        <?php endif ?>
     </body>
     <footer>
         Moi perviy blog<br>

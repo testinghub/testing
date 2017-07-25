@@ -177,3 +177,29 @@ input[name='email']:error{
 
     border-bottom: 3px solid #FFAA00;
 }
+.section{
+    padding: 20px;
+    background: #FFD580;
+    border-top: 3px solid #FFAA00;
+}
+.name{
+    text-align: center;
+}
+.search{
+    border-radius: 100px;
+    border: 1px solid;
+    width: 180px;
+    height: 30px;
+    padding: 0px 0px 0px 8px;
+}
+.search_but{
+    border-radius: 100px;
+    border: 0px;
+    padding: 5px;
+    background: rgba(175, 175, 175, 0.91);
+    color:#ffffff;
+}
+.searching{
+    margin-top: 20px;
+    text-align: center;
+}

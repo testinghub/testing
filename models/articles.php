@@ -36,19 +36,21 @@
         return $article;
     }
 
-    function articles_new($link, $title, $date, $content)
+    function articles_new($link, $title, $date, $content, $section_id)
     {
         $title = trim($title);
         $content = trim($content);
+        $section_id = trim($section_id);
 
         if($title == '')
             return false;
 
-        $t = "INSERT INTO articles (title, date, content) VALUES ('%s', '%s', '%s')";
+        $t = "INSERT INTO articles (title, date, content, section_id) VALUES ('%s', '%s', '%s', '%s')";
 
         $query = sprintf($t, mysqli_real_escape_string($link, $title),
                              mysqli_real_escape_string($link, $date),
-                             mysqli_real_escape_string($link, $content));
+                             mysqli_real_escape_string($link, $content),
+                             mysqli_real_escape_string($link, $section_id));
 
         //echo $query;
         $result = mysqli_query($link, $query);
@@ -59,22 +61,24 @@
             return true;
     }
 
-    function articles_edit($link, $id, $title, $date, $content)
+    function articles_edit($link, $id, $title, $date, $content, $section_id)
     {
         $title = trim($title);
         $content = trim($content);
         $date = trim($date);
+        $section_id = trim($section_id);
         $id = (int)$id;
 
 
         if ($title == '')
             return false;
 
-        $sql = "UPDATE articles SET title='%s', content='%s', date='%s' WHERE id='%d'";
+        $sql = "UPDATE articles SET title='%s', content='%s', date='%s', section_id='%s' WHERE id='%d'";
 
         $query = sprintf($sql,mysqli_real_escape_string($link, $title),
                               mysqli_real_escape_string($link, $content),
                               mysqli_real_escape_string($link, $date),
+                              mysqli_real_escape_string($link, $section_id),
                               $id);
 
         $result = mysqli_query($link, $query);
@@ -129,9 +133,50 @@
 
     }
 
-    function articles_intro2($text, $len = 80)
+    function articles_intro2($text, $len = 100)
     {
         return mb_substr($text, 0, $len);
     }
+
+    function section_all($link)
+    {
+
+        $query = "SELECT * FROM section order by timestamp desc";
+        $result = mysqli_query($link, $query);
+
+        if (!$result)
+            die(mysqli_error($link));
+
+        //$n = mysqli_num_rows($result);
+       // $section = array();
+
+
+/*
+        for ($i = 0; $i < $n; $i++)
+        {
+        $row = mysqli_fetch_assoc($result);
+        $section[] = $row;
+        }
+*/
+
+
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    }
+    function section_get($link, $section_id)
+    {
+        $query = sprintf("SELECT * FROM articles WHERE section_id='%d'",
+        (int)$section_id);
+        $result = mysqli_query($link, $query);
+
+        if (!$result)
+            die(mysqli_error($link));
+
+        $section = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        return $section;
+    }
+
+
 
 ?>

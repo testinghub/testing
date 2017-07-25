@@ -40,13 +40,22 @@
                                 </h3>
                                 <em>Публикация: <?=$a['date']?></em>
 
-                                <p class="text"><?=articles_intro($a['content'])?></p>
+                                <p class="text"><?=articles_intro($a['content'])?>...</p>
                             </div>
 
                         <?php endforeach ?>
                     </div>
                 </div>
                 <div class="column right">
+
+
+
+                    <div class="searching">
+                        <form action="../search/search.php" method="post">
+                            <input class="search" type="text" name="search" autofocus >
+                            <input class="search_but" type="submit" name="submit" value="Поиск">
+                        </form>
+                    </div>
 
                     <div class="lastnews">
                         <?php foreach($articles2 as $a2): ?>
@@ -57,8 +66,17 @@
 
 
                             <div>
-                                <p class=""><?=articles_intro2($a2['content'])?></p>
+                                <p class=""><?=articles_intro2($a2['content'])?>...</p>
 
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+
+                    <div class="section">
+                        <p class="name">Разделы</p>
+                        <?php foreach($section as $s): ?>
+                            <div>
+                                <a href="article.php?section=<?php echo $s['id']?>"><?php echo $s['name']?></a>
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -113,7 +131,7 @@
                         echo "Вы вошли на сайт, как ".$_SESSION['login']."<br><a  href='../index.php'>На главную</a>";
                         }
                         ?><br>
-                        <a href="/registration/exit.php">Выход</a>
+                        <?php if(isAuth()){ ?><a href="/registration/exit.php">Выход</a><?php } ?>
                     </div>
 
                 </div>

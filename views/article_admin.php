@@ -26,6 +26,13 @@
                         <input type="text" name="title" value="<?php echo isset($article['title']) ? $article['title'] : ''; ?>" class="form-item" autofocus required>
                     </label>
                     <label>
+                    Раздел
+                        <p><select class="form-item" name="section_id">
+                        <option value="1">Украина</option>
+                        <option value="2">Другое</option>
+                       </select></p>
+                    </label>
+                    <label>
                     Дата
                         <input name="date" id="datepicker" value="<?php echo isset($article['date']) ? $article['date'] : ''; ?>" class="form-item" required>
                     </label>

@@ -9,18 +9,20 @@
     <body>
         <div class="container">
             <h1>Blog</h1>
-            <?php if(!empty($article)): ?>
             <div>
                 <div class="article">
-                    <h3>
-                        <?=$article['title']?>
-                    </h3>
-                    <em>Opyblikovano: <?=$article['date']?></em>
-                    <p><?=$article['content']?></p>
+                    <?php foreach($section as $s): ?>
+                        <div>
+                            <h3>
+                                <?=$s['title']?>
+                            </h3>
+                            <em>Opyblikovano: <?=$s['date']?></em>
+                            <p><?=$s['content']?></p>
+                        </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
-        <?php endif ?>
     </body>
     <footer>
         Moi perviy blog<br>

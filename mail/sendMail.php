@@ -25,7 +25,7 @@ if (isset($_POST['button'])){
     do{
         $i++;
         $email = $myrow["email"];
-        $result = mail( $email, "site portalrog", $text, " ", "lsslss@ka.1");
+        $result = mail( $email, "texting.my-style.in", $text, " ", "lsslss@ka.1");
     }
     while($myrow = mysqli_fetch_array($query));
 }
