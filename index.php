@@ -5,18 +5,18 @@
 
 
 
-   require_once 'database.php';
-   require_once 'models/articles.php';
+    require_once 'database.php';
+    require_once 'models/articles.php';
 
-   require_once 'helpers/authhelp.php';
-
-
-   $link = db_connect();
-   $articles = articles_all($link);
-   $articles2 = articles_all2($link);
-   $section = section_all($link);
+    require_once 'helpers/authhelp.php';
 
 
-   include("views/articles.php")
+    $link = db_connect();
+    $articles = articles_all($link);
+    $articles2 = articles_all2($link);
+    $section = section_all($link);
+
+
+    include("views/articles.php")
 
 ?>
