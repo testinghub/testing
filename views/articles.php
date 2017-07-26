@@ -2,7 +2,6 @@
     //  вся процедура работает на сессиях. Именно в ней хранятся данные  пользователя, пока он находится на сайте. Очень важно запустить их в  самом начале странички!!!
     session_start();
     ?>
-
 <!DOCTYPE html>
 <html >
     <head>
@@ -11,11 +10,8 @@
         <title>Blog</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="/style.css?<?php echo time(); ?>">
-
-
     </head>
     <style>
-
     a:hover{
         text-decoration: none;
         color: #03b453;
@@ -26,7 +22,6 @@
     footer{
         text-align: center;
     }
-
     </style>
     <body>
         <div class="container">
@@ -35,80 +30,32 @@
                     <h1>Blog</h1>
                     <?php if(isADM()){ ?><a href="admin">Панель админа</a><br><?php } ?>
                     <?php if(isADM()){ ?><a href="mail/mail.php">Розсылка</a><br><?php } ?>
-                    <!--<div class="cont">
-                        <?php foreach($articles as $a): ?>
-                            <div class="article">
-                                <h3>
-                                    <a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a>
-                                </h3>
-                                <em>Публикация: <?=$a['date']?></em>
-
-                                <p class="text"><?=articles_intro($a['content'])?>...</p>
-                            </div>
-
-                        <?php endforeach ?>
-
-                    </div>-->
                     <div>
                         <?php
-                        require_once 'models/Navigator.php';
-
-                        "<div class='cont'>";
-                        foreach($postrow as $article):
-                        foreach($article as $a):
-                            ?>
-                            <div class="article">
-                                <h3>
-                                    <a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a>
-                                </h3>
-                                <em>Публикация: <?=$a['date']?></em>
-
-                                <p class="text"><?=articles_intro($a['content'])?>...</p>
-                            </div>
-
-
-
-                             <!--/*echo "<div class='article'>
-                                     <a href='article.php?id=".$articles[$i]['id']."'><h3>".$articles[$i]['title']."</h3></a>
-                                     <em>Публикация: ".$articles[$i]['date']."</em>
-                                   <p class='text'>".articles_intro2($articles[$i]['content'])."...</p></div>";*/-->
-                          <?php
-
-                        endforeach;
-                        endforeach;
-
-
-                        "</div>";
-
-
-                        $pervpage = $page !=1 ? '<a href= ../index.php?page=1><<</a><a href= ./index.php?page='. ($page - 1) .'><</a> ' : ' ';
-                        $nextpage = $page != $total ? ' <a href= ../index.php?page='. ($page + 1) .'>></a><a href= ./index.php?page=' .$total. '>>></a>' : '';
-
-                        $page2left = $page - 2 > 0 ? ' <a href= ../index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ' : '';
-                        $page1left = $page - 1 > 0 ? '<a href= ../index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ' : '' ;
-                        $page2right = $page + 2 <= $total ? ' | <a href= ../index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>' : '' ;
-                        $page1right = $page + 1 <= $total ? ' | <a href= ../index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>' : '' ;
-
-
-                        // Вывод меню
-                        echo $pervpage.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$nextpage;
-
-/*
-
-                        // Проверяем нужны ли стрелки назад
-                        if ($page != 1) $pervpage = '<a href= ./index.php?page=1><<</a>
-                                                       //<a href= ./index.php?page='. ($page - 1) .'><</a> ';
-                        // Проверяем нужны ли стрелки вперед
-                        if ($page != $total) $nextpage = ' <a href= ./index.php?page='. ($page + 1) .'>></a>
-                                                          <a href= ./index.php?page=' .$total. '>>></a>';
-
-                        // Находим две ближайшие станицы с обоих краев, если они есть
-                        if($page - 2 > 0) $page2left = ' <a href= ./index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';
-                        if($page - 1 > 0) $page1left = '<a href= ./index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';
-                        if($page + 2 <= $total) $page2right = ' | <a href= ./index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>';
-                        if($page + 1 <= $total) $page1right = ' | <a href= ./index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>';
-*/
-
+                            require_once 'models/Navigator.php';
+                            "<div class='cont'>";
+                            foreach($postrow as $article):
+                            foreach($article as $a):
+                                ?>
+                                <div class="article">
+                                    <h3>
+                                        <a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a>
+                                    </h3>
+                                    <em>Публикация: <?=$a['date']?></em>
+                                    <p class="text"><?=articles_intro($a['content'])?>...</p>
+                                </div>
+                                  <?php
+                            endforeach;
+                            endforeach;
+                            "</div>";
+                            $pervpage = $page !=1 ? '<a href= ../index.php?page=1><<</a><a href= ./index.php?page='. ($page - 1) .'><</a> ' : ' ';
+                            $nextpage = $page != $total ? ' <a href= ../index.php?page='. ($page + 1) .'>></a><a href= ./index.php?page=' .$total. '>>></a>' : '';
+                            $page2left = $page - 2 > 0 ? ' <a href= ../index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ' : '';
+                            $page1left = $page - 1 > 0 ? '<a href= ../index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ' : '' ;
+                            $page2right = $page + 2 <= $total ? ' | <a href= ../index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>' : '' ;
+                            $page1right = $page + 1 <= $total ? ' | <a href= ../index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>' : '' ;
+                            // Вывод меню
+                            echo $pervpage.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$nextpage;
                         ?>
                     </div>
                 </div>
@@ -125,11 +72,8 @@
                                 <a href="article.php?id=<?=$a2['id']?>"><?=$a2['title']?></a><br>
                                 <em>Публикация: <?=$a2['date']?></em>
                             </div>
-
-
                             <div>
                                 <p class=""><?=articles_intro2($a2['content'])?>...</p>
-
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -153,27 +97,17 @@
                     </div>
                     <div class="signup">
                         <form action="/registration/testreg.php" method="post">
-
-
                         <p>
                         <label>Ваш логин:<br></label>
                         <input class="sub_text" name="login" type="text" size="15" maxlength="15">
                         </p>
-
-
                         <p>
-
                         <label>Ваш пароль:<br></label>
                         <input class="sub_text" name="password" type="password" size="15" maxlength="15">
                         </p>
-
-
                         <p>
                         <input class="but" type="submit" name="submit" value="Войти">
-
-
                         <br>
-
                         <a href="/registration/reg.php">Зарегистрироваться</a>
                         </p></form>
                         <br>
@@ -186,19 +120,15 @@
                         }
                         else
                         {
-
                         // Если не пусты, то мы выводим ссылку
                         echo "Вы вошли на сайт, как ".$_SESSION['login']."<br><a  href='../index.php'>На главную</a>";
                         }
                         ?><br>
                         <?php if(isAuth()){ ?><a href="/registration/exit.php">Выход</a><?php } ?>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
     </body>
     <footer>
         Мой первый блог<br>
