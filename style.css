@@ -1,7 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: sans-serif;
+    font-family: arial;
 
 }
 
@@ -11,11 +11,9 @@ footer{
 }
 a{
     text-decoration: none;
-    color: purple;
 }
 a:hover{
     text-decoration: none;
-    color: red;
 }
 .article{
     width: 50%;
@@ -52,16 +50,15 @@ input[name='email']:error{
 .but{
     border-radius: 10px;
     border: 1px solid;
-    width: 250px;
-    height: 30px;
-    margin: 0px 0px 10px 0px;
+    width: 170px;
+    height: 25px;
+    margin: 0px -5px 10px 0px;
     background: #e7b841;
 }
 
 .signup{
     text-align: center;
     border-bottom: 3px solid #FFAA00;
-    border-top: 3px solid #FFAA00;
     background: #FFD580;
 }
 .regist{
@@ -84,7 +81,6 @@ input[name='email']:error{
     width: 250px;
     height: 30px;
     padding: 0px 0px 0px 8px;
-
     margin-bottom: 20px
 }
 .reg{
@@ -97,7 +93,7 @@ input[name='email']:error{
     height: 30px;
     padding: 0px 0px 0px 8px;
     margin-top: 20px;
-    background: #e7b841
+    background: #e7b841;
 }
 .tooop{
     padding-top: 20px;
@@ -106,23 +102,20 @@ input[name='email']:error{
     background: #d6d6d6;
 }
 .sub{
-    display: inline-block;
-    float: right;
     text-align: center;
     background: #ffdc97;
-    width: 270px;
 }
 .sub_form{
     background: #FFD580;
-    width: 270px;
     height: 130px;
     border-bottom: 3px solid #FFAA00;
     border-top: 3px solid #FFAA00;
+    padding-top: 5px;
 }
 .sub_text{
     border-radius: 100px;
     border: 1px solid;
-    width: 250px;
+    width: 180px;
     height: 30px;
     padding: 0px 0px 0px 8px;
 
@@ -130,7 +123,7 @@ input[name='email']:error{
 .sub_but{
     border-radius: 10px;
     border: 0;
-    width: 200px;
+    width: 180px;
     background: rgba(243, 91, 91, 0.87);
     color: #fff;
 }
@@ -202,4 +195,7 @@ input[name='email']:error{
 .searching{
     margin-top: 20px;
     text-align: center;
+}
+.navigation{
+    margin: 0 auto;
 }

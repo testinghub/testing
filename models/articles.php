@@ -141,7 +141,7 @@
     function section_all($link)
     {
 
-        $query = "SELECT * FROM section order by timestamp desc";
+        $query = "SELECT * FROM section order by timestamp";
         $result = mysqli_query($link, $query);
 
         if (!$result)

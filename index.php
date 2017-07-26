@@ -4,7 +4,6 @@
     ini_set('display_error', 1);
 
 
-
     require_once 'database.php';
     require_once 'models/articles.php';
 
@@ -17,6 +16,10 @@
     $section = section_all($link);
 
 
-    include("views/articles.php")
+    include("views/articles.php");
+
+
+   // require_once 'models/Navigator.php';
+
 
 ?>

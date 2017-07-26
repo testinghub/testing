@@ -7,9 +7,12 @@
 <html >
     <head>
         <meta charset="UTF8">
+        <meta http-equiv="Pragma" content="no-cache">
         <title>Blog</title>
-        <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="/style.css?<?php echo time(); ?>">
+
+
     </head>
     <style>
 
@@ -45,18 +48,53 @@
 
                         <?php endforeach ?>
                     </div>
+                    <div>
+                        <?php
+                        require_once 'models/Navigator.php';
+
+
+/*
+
+                        echo "<table>";
+                        for($i = 0; $i < $num; $i++)
+                        {
+                         echo "<tr>
+                                 <td>".$postrow[$i]['name']."</td>
+                                 <td>".$postrow[$i]['time']."</td></tr>
+                               <tr><td colspan=\"2\">".$postrow[$i]['text']."</td></tr>";
+                        }
+                        echo "</table>";
+*/
+
+
+
+
+                        // Проверяем нужны ли стрелки назад
+                        if ($page != 1) $pervpage = '<a href= ./index.php?page=1><<</a>
+                                                       <a href= ./index.php?page='. ($page - 1) .'><</a> ';
+                        // Проверяем нужны ли стрелки вперед
+                        if ($page != $total) $nextpage = ' <a href= ./index.php?page='. ($page + 1) .'>></a>
+                                                           <a href= ./index.php?page=' .$total. '>>></a>';
+
+                        // Находим две ближайшие станицы с обоих краев, если они есть
+                        if($page - 2 > 0) $page2left = ' <a href= ./index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';
+                        if($page - 1 > 0) $page1left = '<a href= ./index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';
+                        if($page + 2 <= $total) $page2right = ' | <a href= ./index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>';
+                        if($page + 1 <= $total) $page1right = ' | <a href= ./index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>';
+
+                        // Вывод меню
+                        echo $pervpage,$page2left,$page1left,'<b>',$page,'</b>',$page1right,$page2right,$nextpage;
+
+                        ?>
+                    </div>
                 </div>
                 <div class="column right">
-
-
-
                     <div class="searching">
                         <form action="../search/search.php" method="post">
                             <input class="search" type="text" name="search" autofocus >
                             <input class="search_but" type="submit" name="submit" value="Поиск">
                         </form>
                     </div>
-
                     <div class="lastnews">
                         <?php foreach($articles2 as $a2): ?>
                             <div>
@@ -71,7 +109,6 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-
                     <div class="section">
                         <p class="name">Разделы</p>
                         <?php foreach($section as $s): ?>
@@ -80,15 +117,14 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-
                     <div class="sub">
                         <form class="sub_form" method="post" action="/subscribe/sub.php">
-                        <label>Подписка на наши новости</label><br>
-                        <label>Ваш e-mail:</label><br>
-                        <input class="sub_text" name="email" type="email" size="25" maxlength="50">
-                        </p>
-                        <p>
-                        <input class="sub_but" type="submit" name="submit" value="Подписаться">
+                            <label>Подписка на наши новости</label><br>
+                            <label>Ваш e-mail:</label><br>
+                            <input class="sub_text" name="email" type="email" size="25" maxlength="50">
+                            </p>
+                            <p>
+                            <input class="sub_but" type="submit" name="submit" value="Подписаться">
                         </form>
                     </div>
                     <div class="signup">
@@ -137,6 +173,8 @@
                 </div>
             </div>
         </div>
+
+
     </body>
     <footer>
         Мой первый блог<br>

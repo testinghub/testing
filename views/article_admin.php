@@ -28,8 +28,8 @@
                     <label>
                     Раздел
                         <p><select class="form-item" name="section_id">
-                        <option value="1">Украина</option>
-                        <option value="2">Другое</option>
+                        <option value="1">Раздел 1</option>
+                        <option value="2">Раздел 2</option>
                        </select></p>
                     </label>
                     <label>
