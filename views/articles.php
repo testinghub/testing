@@ -35,7 +35,7 @@
                     <h1>Blog</h1>
                     <?php if(isADM()){ ?><a href="admin">Панель админа</a><br><?php } ?>
                     <?php if(isADM()){ ?><a href="mail/mail.php">Розсылка</a><br><?php } ?>
-                    <div class="cont">
+                    <!--<div class="cont">
                         <?php foreach($articles as $a): ?>
                             <div class="article">
                                 <h3>
@@ -47,43 +47,67 @@
                             </div>
 
                         <?php endforeach ?>
-                    </div>
+
+                    </div>-->
                     <div>
                         <?php
                         require_once 'models/Navigator.php';
 
+                        "<div class='cont'>";
+                        foreach($postrow as $article):
+                        foreach($article as $a):
+                            ?>
+                            <div class="article">
+                                <h3>
+                                    <a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a>
+                                </h3>
+                                <em>Публикация: <?=$a['date']?></em>
+
+                                <p class="text"><?=articles_intro($a['content'])?>...</p>
+                            </div>
+
+
+
+                             <!--/*echo "<div class='article'>
+                                     <a href='article.php?id=".$articles[$i]['id']."'><h3>".$articles[$i]['title']."</h3></a>
+                                     <em>Публикация: ".$articles[$i]['date']."</em>
+                                   <p class='text'>".articles_intro2($articles[$i]['content'])."...</p></div>";*/-->
+                          <?php
+
+                        endforeach;
+                        endforeach;
+
+
+                        "</div>";
+
+
+                        $pervpage = $page !=1 ? '<a href= ../index.php?page=1><<</a><a href= ./index.php?page='. ($page - 1) .'><</a> ' : ' ';
+                        $nextpage = $page != $total ? ' <a href= ../index.php?page='. ($page + 1) .'>></a><a href= ./index.php?page=' .$total. '>>></a>' : '';
+
+                        $page2left = $page - 2 > 0 ? ' <a href= ../index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ' : '';
+                        $page1left = $page - 1 > 0 ? '<a href= ../index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ' : '' ;
+                        $page2right = $page + 2 <= $total ? ' | <a href= ../index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>' : '' ;
+                        $page1right = $page + 1 <= $total ? ' | <a href= ../index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>' : '' ;
+
+
+                        // Вывод меню
+                        echo $pervpage.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$nextpage;
 
 /*
 
-                        echo "<table>";
-                        for($i = 0; $i < $num; $i++)
-                        {
-                         echo "<tr>
-                                 <td>".$postrow[$i]['name']."</td>
-                                 <td>".$postrow[$i]['time']."</td></tr>
-                               <tr><td colspan=\"2\">".$postrow[$i]['text']."</td></tr>";
-                        }
-                        echo "</table>";
-*/
-
-
-
-
                         // Проверяем нужны ли стрелки назад
                         if ($page != 1) $pervpage = '<a href= ./index.php?page=1><<</a>
-                                                       <a href= ./index.php?page='. ($page - 1) .'><</a> ';
+                                                       //<a href= ./index.php?page='. ($page - 1) .'><</a> ';
                         // Проверяем нужны ли стрелки вперед
                         if ($page != $total) $nextpage = ' <a href= ./index.php?page='. ($page + 1) .'>></a>
-                                                           <a href= ./index.php?page=' .$total. '>>></a>';
+                                                          <a href= ./index.php?page=' .$total. '>>></a>';
 
                         // Находим две ближайшие станицы с обоих краев, если они есть
                         if($page - 2 > 0) $page2left = ' <a href= ./index.php?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';
                         if($page - 1 > 0) $page1left = '<a href= ./index.php?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';
                         if($page + 2 <= $total) $page2right = ' | <a href= ./index.php?page='. ($page + 2) .'>'. ($page + 2) .'</a>';
                         if($page + 1 <= $total) $page1right = ' | <a href= ./index.php?page='. ($page + 1) .'>'. ($page + 1) .'</a>';
-
-                        // Вывод меню
-                        echo $pervpage,$page2left,$page1left,'<b>',$page,'</b>',$page1right,$page2right,$nextpage;
+*/
 
                         ?>
                     </div>
