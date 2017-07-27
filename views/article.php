@@ -21,6 +21,7 @@
             </div>
         </div>
         <?php endif ?>
+
     </body>
     <footer>
         Moi perviy blog<br>

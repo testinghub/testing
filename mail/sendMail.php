@@ -57,19 +57,37 @@ if (isset($_POST['button'])){
 
             <div>
                 <a href="../index.php">Домой</a><br>
-                <form action="sendMail.php" method="post">
-                    <label><h2>Розсылка пользователям сайта</h2></label><br>
-                    <textarea class="textar" name="text"></textarea><br>
-                    <input type="submit" name="button" value="Отправить"></input><br>
-                    <?php
-                        if($result == true){
-                            echo "Отправлено " . $i ." пользователям";
-                        }
-                        else{
-                            echo "АШЫБКА";
-                        }
-                    ?>
-                </form>
+                <?php
+
+            if (isset($_POST['submit'])) {
+
+              $to      = $_POST['to'];
+              $subject = $_POST['subj'];
+              $message = $_POST['msg'];
+
+              // Заголовки сообщения, в них определяется кодировка сообщения, поля From, To и т.д.
+              $headers = "MIME-Version: 1.0\r\n";
+              $headers .= "Content-type: text/html; charset=windows-1251\r\n";
+              $headers .= "To: $to\r\n";
+              $headers .= "From: Имя отправителя <testing.my-style.in@example.com>";
+
+              // mail ($to, $subject, $message, $headers);
+
+              require_once "ss.php";
+              MailSmtp ($to, $subject, $message, $headers);
+
+            }
+
+?>
+
+<form action="" method="post">
+  <pre>
+    Кому:   <input type="text" name="to">
+    Тема:   <input type="text" name="subj">
+    Текст:  <input type="text" name="msg">
+    <input type="submit" value="Отправить!" name="submit">
+  </pre>
+</form>
 
             </div>
         </div>
