@@ -24,19 +24,22 @@
         $article = mysqli_fetch_assoc($result);
         return $article;
     }
-    function articles_new($link, $title, $date, $content, $section_id)
+    function articles_new($link, $title, $date, $content, $section_id, $likes_id)
     {
         $title = trim($title);
         $content = trim($content);
         $section_id = trim($section_id);
+        $likes_id = trim($likes_id);
         if($title == '')
             return false;
         $t = "INSERT INTO articles (title, date, content, section_id) VALUES ('%s', '%s', '%s', '%s')";
+        $t = "INSERT INTO likes (likes_id) VALUES ('%s')";
         $query = sprintf($t, mysqli_real_escape_string($link, $title),
                              mysqli_real_escape_string($link, $date),
                              mysqli_real_escape_string($link, $content),
-                             mysqli_real_escape_string($link, $section_id));
-        //echo $query;
+                             mysqli_real_escape_string($link, $section_id),
+                             mysqli_real_escape_string($link, $likes_id));
+        //$query2 = sprintf($t2, );
         $result = mysqli_query($link, $query);
         if (!$result)
             die(mysqli_error($link));
@@ -123,4 +126,51 @@
         $section = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $section;
     }
+
+    function like_all($link)
+    {
+        $query = "SELECT * FROM likes order by likes_id ";
+        $result = mysqli_query($link, $query);
+        if (!$result)
+            die(mysqli_error($link));
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+    function like_get($link, $likes_id)
+    {
+        $query = sprintf("SELECT * FROM likes JOIN articles WHERE likes_id='%d' LIMIT 1",
+        (int)$likes_id);
+        $result = mysqli_query($link, $query);
+        if (!$result)
+            die(mysqli_error($link));
+        $like = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $like;
+    }
+
+    function like_edit($link, $like, $likes_id = 0)
+    {
+        $like = trim($like);
+        $likes_id = (int)($likes_id);
+        $sql = sprintf("UPDATE likes SET likes=likes+1 WHERE likes_id='%d'", mysqli_real_escape_string($link, $like),($likes_id));
+        //$query = ($sql, mysqli_real_escape_string($link, $like),($likes_id));
+        $result = mysqli_query($link, $sql);
+        if (!$result)
+            die(mysqli_error($link));
+        return mysqli_affected_rows($link);
+
+    }
+    function like_edit2($link, $like, $likes_id = 0)
+    {
+        $like = trim($like);
+        $likes_id = (int)($likes_id);
+        $sql = sprintf("UPDATE likes SET likes=likes-1 WHERE likes_id='%d'", mysqli_real_escape_string($link, $like),($likes_id));
+        //$query = ($sql, mysqli_real_escape_string($link, $like),($likes_id));
+        $result = mysqli_query($link, $sql);
+        if (!$result)
+            die(mysqli_error($link));
+        return mysqli_affected_rows($link);
+
+    }
+
+
+
 ?>

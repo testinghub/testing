@@ -25,9 +25,11 @@
                     Имя
                         <input type="text" name="title" value="<?php echo isset($article['title']) ? $article['title'] : ''; ?>" class="form-item" autofocus required>
                     </label>
+                    <input type="hidden" name="likes_id" value="text">
                     <label>
                     Раздел
                         <p><select class="form-item" name="section_id">
+                        <option ></option>
                         <option value="1">Раздел 1</option>
                         <option value="2">Раздел 2</option>
                        </select></p>
@@ -40,6 +42,7 @@
                     Текст
                     <textarea class="form-item" name="content" required><?php echo isset($article['content']) ? $article['content'] : ''; ?></textarea>
                     </label>
+
                     <input type="submit" value="Сохранить" class="btn">
                 </form>
             </div>

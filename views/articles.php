@@ -28,8 +28,11 @@
             <div class="grid">
                 <div class="column left">
                     <h1>Blog</h1>
+
+
+
                     <?php if(isADM()){ ?><a href="admin">Панель админа</a><br><?php } ?>
-                    <?php if(isADM()){ ?><a href="mail/mail.php">Розсылка</a><br><?php } ?>
+                    <?php if(isADM()){ ?><a href="mail/sendMail.php">Розсылка</a><br><?php } ?>
                     <div>
                         <?php
                             require_once 'models/Navigator.php';
@@ -95,7 +98,7 @@
                             <input class="sub_but" type="submit" name="submit" value="Подписаться">
                         </form>
                     </div>
-                    <div class="signup">
+                    <div class="signup" >
                         <form action="/registration/testreg.php" method="post">
                         <p>
                         <label>Ваш логин:<br></label>

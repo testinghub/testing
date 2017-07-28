@@ -199,3 +199,31 @@ input[name='email']:error{
 .arrows{
     margin: 0 auto;
 }
+.poslikes{
+
+    display: flex;
+}
+.formplus{
+    display: block;
+}
+.likes{
+    font-size: 20px;
+    display: block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.plus1{
+    position: relative;
+    border: 0px;
+    border-radius: 500px;
+    width: 25px;
+    height: 25px;
+    background: #00d91a;
+}
+.minus1{
+    border: 0px;
+    border-radius: 500px;
+    width: 25px;
+    height: 25px;
+    background: #d90000;
+}
