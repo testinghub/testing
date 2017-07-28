@@ -1,16 +1,42 @@
-
+<?php
+    setCookie('111', 'test me, please', time() + 3600, '/');
+?>
 <!DOCTYPE html>
 <html >
     <head>
         <meta charset="UTF8">
+        <meta property="fb:admins" content="{100004004053117}"/>
+        <meta property="fb:app_id" content="{249253302259637}"/>
         <title>Blog</title>
+        <link rel="stylesheet" href="js.src = "//connect.facebook.net/ru_RUS/sdk.js#xfbml=1&amp;version=v2.4";">
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     </head>
+    <script>
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '249253302259637',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v2.10'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
     <body>
         <div class="container">
             <h1>Blog</h1>
+            <a href="../index.php">Домой</a><br><br>
             <?php if(!empty($article)): ?>
             <div>
                 <div class="article">
@@ -38,8 +64,8 @@
                     </form>
                     </div>
                     <?php endforeach ?>
+                    <div class="fb-comments" data-href="https://www.facebook.com/54577845<?=$article['id']?>" data-width="600" data-numposts="1"></div>
                 </div>
-            </div>
         </div>
         <?php endif ?>
     </body>

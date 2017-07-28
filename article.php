@@ -28,15 +28,31 @@
 
 
     if(isset($_POST['addlikes']) && isset(($_POST['id']))){
-        $like1 = like_edit($link, $_POST['id']);
+/*
+        print_r($_COOKIE['like' . $_POST['id']]);
+        exit();
+*/
+        if(!isset($_COOKIE['like' . $_POST['id']])){
+            $like1 = like_edit($link, $_POST['id']);
+            setcookie('like' . $_POST['id'], time(), time() + 60);
+
+        }
+
         header('Location: /article.php?id='.$_POST['id']);
 
     }
 
-    if(isset($_POST['adddislikes']) && isset(($_POST['id']))){
-        $dislike1 = like_edit2($link, $_POST['id']);
-        header('Location: /article.php?id='.$_POST['id']);
 
+
+
+
+    if(isset($_POST['adddislikes']) && isset(($_POST['id']))){
+        if(!isset($_COOKIE['dislike' . $_POST['id']])){
+            $dislike1 = like_edit2($link, $_POST['id']);
+            setcookie('dislike' . $_POST['id'], time(), time() + 3600);
+        }
+
+        header('Location: /article.php?id='.$_POST['id']);
     }
 
 
