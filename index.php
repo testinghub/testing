@@ -20,6 +20,10 @@
     include("views/articles.php");
 
 
+
+
+
+
    // require_once 'models/Navigator.php';
 
 

@@ -227,3 +227,12 @@ input[name='email']:error{
     height: 25px;
     background: #d90000;
 }
+
+.gAuth{
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 4px;
+    background: red;
+    color: #fff;
+    height: 25px;
+}
